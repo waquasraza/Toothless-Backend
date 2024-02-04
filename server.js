@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT;
 const dbConnection = require('./config/db');
 
-const leadsRoute = require('./routes/leads');
+const contactsRoute = require('./routes/contact');
 
 // db connection
 dbConnection();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // leads route
-app.use('/api/v1/leads', leadsRoute);
+app.use('/api/v1/contacts', contactsRoute);
 
 // listen server
 app.listen(PORT, () => {
