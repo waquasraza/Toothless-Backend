@@ -4,6 +4,7 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 
+const {auth} = require('../middlewares/auth')
 const {
 	getAllContacts,
 	getContactById,
@@ -47,12 +48,16 @@ const upload = multer({
 });
 
 // routes
-router.route('/').get(getAllContacts).post(addContact).delete(deleteContacts);
+router
+	.route('/')
+	.get(auth, getAllContacts)
+	.post(auth, addContact)
+	.delete(auth, deleteContacts);
 router
 	.route('/:id')
-	.get(getContactById)
-	.put(updateContact)
-	.delete(deleteContact);
-router.route('/upload').post(upload.single('upload'), uploadContacts);
+	.get(auth, getContactById)
+	.put(auth, updateContact)
+	.delete(auth, deleteContact);
+router.route('/upload').post(auth, upload.single('upload'), uploadContacts);
 
 module.exports = router;

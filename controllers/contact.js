@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('fast-csv');
 
-const Contact = require('../model/Contact');
+const Contact = require('../models/Contact');
 
 // @desc    GET All contacts
 // @route   GET /api/v1/contacts/
