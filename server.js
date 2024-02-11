@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 app.use('/api/v1/contacts', contactsRoute);
 
 // user route
-app.use('/api/v1/auth', userRoute);
+app.use('/api/v1/users/', userRoute);
 
 // listen server
 app.listen(PORT, () => {
